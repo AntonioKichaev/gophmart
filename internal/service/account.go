@@ -120,7 +120,7 @@ func (a *Account) Withdrawn(ctx context.Context, dto *WithdrawByUserIDDTO) error
 	if err != nil {
 		return err
 	}
-	//todo: вынести в withdrawn
+
 	err = a.wd.Create(ctx, WithdrawnCreateDTO{
 		OrderID:       order.ID,
 		SaveBalanceID: sb.ID,

@@ -9,6 +9,7 @@ type EnvSetting struct {
 	RunAddress           string `env:"RUN_ADDRESS"`
 	DatabaseURI          string `env:"DATABASE_URI"`
 	AccrualSystemAddress string `env:"ACCRUAL_SYSTEM_ADDRESS"`
+	SecretKeyAuth        string `env:"SecretKeyAuth"`
 }
 
 type Config struct {
@@ -21,6 +22,7 @@ func New() *Config {
 			RunAddress:           "localhost:8080",
 			DatabaseURI:          "postgres://anton:!anton321@localhost:5444/mart?sslmode=disable",
 			AccrualSystemAddress: "",
+			SecretKeyAuth:        "322",
 		},
 	}
 
@@ -41,4 +43,8 @@ func (c *Config) GetRunAddress() string {
 
 func (c *Config) GetAccrualSystemAddress() string {
 	return c.env.AccrualSystemAddress
+}
+
+func (c *Config) GetSecretKeyAuth() string {
+	return c.env.SecretKeyAuth
 }

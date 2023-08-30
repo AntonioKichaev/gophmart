@@ -76,7 +76,6 @@ func (ah *AccountHandle) Withdraw(c *gin.Context) {
 
 		}
 		c.AbortWithStatus(http.StatusPaymentRequired)
-		//c.AbortWithStatus(http.StatusInternalServerError)
 
 		//402 — на счету недостаточно средств;
 		//500 — внутренняя ошибка сервера.

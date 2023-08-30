@@ -48,7 +48,6 @@ func NewAuthService(r AuthRepository, as AccountServiceAdapter) *AuthService {
 	}
 }
 func (us AuthService) Register(ctx context.Context, dto *RegisterDTO) (*entity.User, error) {
-	// make hash
 	user, err := us.r.Register(ctx, &repository.RegisterDTO{
 		Login:    dto.Login,
 		Password: us.h.MakeHash(dto.Password),

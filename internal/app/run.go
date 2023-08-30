@@ -23,7 +23,7 @@ func Run() {
 	route.Use(gin.Logger())
 	db, _ := gorm.Open(postgres.Open(cfg.GetDatabaseURI()), &gorm.Config{})
 
-	authMid := auth.NewAuthMid("322")
+	authMid := auth.NewAuthMid(cfg.GetSecretKeyAuth())
 	// Migrate the schema
 	err := db.AutoMigrate(
 		&entity.User{},
@@ -55,7 +55,6 @@ func Run() {
 
 		authGr.POST("/orders", oc.Handle.UploadOrderID)
 		authGr.GET("/orders", oc.Handle.GetOrderByUser)
-		//
 
 		authGr.GET("/balance", ah.Handle.GetBalanceByUser)
 		authGr.POST("/balance/withdraw", ah.Handle.Withdraw)

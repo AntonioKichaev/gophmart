@@ -50,7 +50,6 @@ func (h *Auth) Register(c *gin.Context) {
 		c.AbortWithStatus(http.StatusBadRequest)
 		//400 - неверный формат
 		return
-		//return err
 	}
 	user, err := h.us.Register(c.Request.Context(), &service.RegisterDTO{
 		Login:    r.Login,

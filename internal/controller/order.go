@@ -27,8 +27,6 @@ func NewOrderHandle(o OrderService) *OrderHandle {
 }
 
 func (oh OrderHandle) UploadOrderID(c *gin.Context) {
-	//check luna
-
 	data, err := io.ReadAll(c.Request.Body)
 	if err != nil {
 		c.AbortWithStatus(http.StatusBadRequest)

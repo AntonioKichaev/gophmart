@@ -52,7 +52,6 @@ func (a *AuthMid) BuildJWTString(userID uint) (string, error) {
 		return "", err
 	}
 
-	// возвращаем строку токена
 	return tokenString, nil
 }
 
@@ -69,6 +68,5 @@ func (a *AuthMid) GetUserID(tokenString string) (uint, error) {
 		return 0, err
 	}
 
-	// возвращаем UserID пользователя в читаемом виде
 	return claims.UserID, nil
 }
