@@ -11,6 +11,7 @@ import (
 	"github.com/AntonioKichaev/internal/repository"
 )
 
+//go:generate mockery --name=AccountRepository --output=../mocks --filename=account_repository.go
 type AccountRepository interface {
 	GetBalanceByID(ctx context.Context, dto repository.GetBalanceByIDDTO) (*entity.SaveBalance, error)
 	GetWithdrawsByUserID(ctx context.Context, dto repository.GetWithdrawsByUserIDDTO) ([]entity.Withdrawn, error)
@@ -19,11 +20,14 @@ type AccountRepository interface {
 	AddPoint(ctx context.Context, dto repository.AddPointDTO) error
 }
 
+//go:generate mockery --name=OrderAdapter --output=../mocks --filename=order_adapter.go
 type OrderAdapter interface {
 	GetOrderByNumber(ctx context.Context, dto GetOrderByNumberDTO) (*entity.Order, error)
 	UploadOrderID(ctx context.Context, dto *UploadOrderIDDTO) (*entity.Order, error)
 	GetOrdersByUser(ctx context.Context, dto *GetOrdersByUserIDDTO) ([]entity.Order, error)
 }
+
+//go:generate mockery --name=WithdrawnAdapter --output=../mocks --filename=withdrawn_adapter.go
 type WithdrawnAdapter interface {
 	Create(ctx context.Context, dto WithdrawnCreateDTO) error
 	GetWithdraws(ctx context.Context, userID uint) ([]entity.Withdrawn, error)
