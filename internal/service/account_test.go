@@ -15,7 +15,6 @@ import (
 
 func TestAccount_Withdrawn(t *testing.T) {
 	repo := mocks.NewAccountRepository(t)
-	//12312
 	oa := mocks.NewOrderAdapter(t)
 	wd := mocks.NewWithdrawnAdapter(t)
 	type args struct {
@@ -146,7 +145,7 @@ func TestAccount_Withdrawn(t *testing.T) {
 
 			}
 
-			if len(tt.wdReturnArgs) > 0 || len(tt.wdReturnArgs) > 0 {
+			if len(tt.wdAdapterOn.args) > 0 || len(tt.wdReturnArgs) > 0 {
 				wd.On(tt.wdAdapterOn.method, tt.wdAdapterOn.args...).Return(tt.wdReturnArgs...)
 			}
 
