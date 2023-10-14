@@ -11,6 +11,7 @@ import (
 	"github.com/AntonioKichaev/internal/service"
 )
 
+//go:generate mockery --name=AccountService --output=./mocks --filename=account.go
 type AccountService interface {
 	GetBalanceByID(ctx context.Context, dto *service.GetBalanceByIDDTO) (*model.UserBalance, error)
 	Withdrawn(ctx context.Context, dto *service.WithdrawByUserIDDTO) error
